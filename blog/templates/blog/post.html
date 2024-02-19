@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "blog/posts.css" %}">
+<link rel="stylesheet" href="{% static "blog/includes/header.css" %}">
+{% endblock %}
+
+{% block page_title %}
+{{post|title}}
+{% endblock %}
+
+{% block content %}
+    {% include "blog/includes/header.html" %}
+{% if text is not None %}
+    <h2>{{text}}</h2>
+{% else %}
+    <p class="fallback">There is no post!</p>
+{% endif %}
+{% endblock %}
