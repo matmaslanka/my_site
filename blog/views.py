@@ -3,9 +3,9 @@ from django.http import Http404, HttpResponse, HttpResponseNotFound, HttpRespons
 from django.urls import reverse
 
 all_posts = {
-    'post1': 'Praca w django to czysta przyjemność!',
-    'post2': 'Wspinaczka to świetna rzecz!',
-    'post3': None
+    'my-first-post': 'Praca w django to czysta przyjemność!',
+    'my-second-post': 'Wspinaczka to świetna rzecz!',
+    'my-third-post': None
 }
 
 
@@ -14,6 +14,15 @@ def index(request):
     posts = list(all_posts.keys())
 
     return render(request, "blog/index.html", {
+        'posts': posts
+    })
+
+
+def posts(request):
+    list_items = ''
+    posts = list(all_posts.keys())
+
+    return render(request, "blog/posts.html", {
         'posts': posts
     })
 

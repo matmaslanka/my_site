@@ -7,15 +7,11 @@
 {% endblock %}
 
 {% block page_title %}
-  My blog
+  Posts
 {% endblock %}
 
 {% block content %}
   {% include 'blog/includes/header.html' %}
-  <h1>Mateusz's Blog</h1>
-  <h2>Hi, I'm Mateusz and I want to be the best programmer in the WORLD!</h2>
-  <h1>My latest posts:<h2>
+  <h1>My Collected Posts:</h2>
   {% include 'blog/includes/latest_posts.html' %}
-
-
 {% endblock %}
