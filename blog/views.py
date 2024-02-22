@@ -81,7 +81,7 @@ def get_date(post):
     return post['date']
 
 
-def index(request):  # tę nazwę zmienić na starting_page
+def index(request):
     sorted_posts = sorted(all_posts, key=get_date)
     latest_posts = sorted_posts [-3:]
 
@@ -99,24 +99,8 @@ def posts(request):
     })
 
 
-def post_content_by_number(requst, post):  # tej funkcji nie dawał
-    posts = list(all_posts.keys())
-
-    if post > len(posts):
-        return HttpResponseNotFound('Invalid post number')
-
-    redirect_post = posts[post - 1]
-    redirect_path = reverse('post-content', args=[redirect_post])
-    return HttpResponseRedirect(redirect_path)
-
-
 def post_content(request, slug):
     identified_post = next(post for post in all_posts if post['slug'] == slug)
-    # try:
-        # post_text = all_posts[post]
     return render(request, "blog/post.html", {
         'post': identified_post,
-        # 'text': post_text
         })
-    # except:
-    #     raise Http404()
