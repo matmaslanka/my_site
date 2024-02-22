@@ -1,7 +1,13 @@
-<ul>
-  {% for post in posts %}
-    <li>
-      <a href="{% url 'post-content' post %}">{{ post|title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+{% load static %}
+
+<li>
+  <article class="post">
+    <a href="{% url 'post-content' post.slug %}">
+      <img src="{% static 'blog/images/'|add:post.image %}" alt="{{ post.title }}" />
+      <div class="post__content">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+      </div>
+    </a>
+  </article>
+</li>

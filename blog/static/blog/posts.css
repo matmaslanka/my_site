@@ -1,33 +1,43 @@
-ul {
-    list-style: none;
-    margin: 2rem auto;
-    width: 90%;
-    max-width: 80rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    padding: 1rem;
-    border-radius: 12px;
+.post {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    height: 25rem;
-    background-color: #eeee;
-}
-
-li {
-    margin: 1rem;
+    align-items: center;
     text-align: center;
-    font-size: 1.5rem;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 1rem;
-}
-
-
-li a {
+  }
+  
+  .post a {
     text-decoration: none;
-    color: #383838;
-}
-
-li a:hover,
-li a:active {
-    color: #7e0154;
-}
+    color: black;
+    transition: all 0.2s ease;
+    padding: 1rem;
+  }
+  
+  .post a:hover,
+  .post a:active {
+    transform: scale(1.1);
+    background-color: #390281;
+    color: white;
+  }
+  
+  .post img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .post h3 {
+    margin: 0.25rem 0;
+  }
+  
+  .post time {
+    color: #666666;
+    margin: 0.25rem;
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+  
+  .post:hover time,
+  .post:active time {
+    color: white;
+  }

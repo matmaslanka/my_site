@@ -1,21 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block css_files %}
-  <link rel="stylesheet" href="{% static 'blog/posts.css' %}" />
-  <link rel="stylesheet" href="{% static 'blog/includes/header.css' %}" />
-{% endblock %}
-
 {% block page_title %}
   My blog
 {% endblock %}
 
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'blog/posts.css' %}" />
+  <link rel="stylesheet" href="{% static 'blog/index.css' %}" />
+{% endblock %}
+
 {% block content %}
-  {% include 'blog/includes/header.html' %}
-  <h1>Mateusz's Blog</h1>
-  <h2>Hi, I'm Mateusz and I want to be the best programmer in the WORLD!</h2>
-  <h1>My latest posts:<h2>
-  {% include 'blog/includes/latest_posts.html' %}
+  <section id="welcome">
+    <header>
+      <img src="{% static 'blog/images/mati.jpg' %}" alt="Mati - The autor of this blog" />
+      <h2>MATEUSZ'S BLOG</h2>
+    </header>
+  </section>
 
+  <section id="latest-posts">
+    <h2>My Latest Thoughts</h2>
 
+    <ul>
+      {% for post in posts %}
+        {% include 'blog/includes/latest_posts.html' %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>What I Do</h2>
+    <p>Hi, I'm Mateusz and I want to be the best programmer in the WORLD!</p>
+    <p>My goal is do my best to become a programmer!</p>
+  </section>
 {% endblock %}

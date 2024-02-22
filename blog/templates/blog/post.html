@@ -1,20 +1,27 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block css_files %}
-<link rel="stylesheet" href="{% static "blog/posts.css" %}">
-<link rel="stylesheet" href="{% static "blog/includes/header.css" %}">
+{% block page_title %}
+  {{ post.title }}
 {% endblock %}
 
-{% block page_title %}
-{{post|title}}
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'blog/post.css' %}" />
 {% endblock %}
 
 {% block content %}
-    {% include "blog/includes/header.html" %}
-{% if text is not None %}
-    <h2>{{text}}</h2>
-{% else %}
-    <p class="fallback">There is no post!</p>
-{% endif %}
+  <section id="summary">
+    <h2>{{ post.title }}</h2>
+    <article>
+      <img src="{% static 'blog/images/'|add:post.image %}" alt="{{ post.title }}" />
+      <address>By {{ post.author }}</address>
+      <div>
+        Last updated on <time>{{ post.date|date:'d M Y' }}</time>
+      </div>
+    </article>
+  </section>
+
+  <main>
+    <h2>{{ post.content|linebreaks }}</h2>
+  </main>
 {% endblock %}
