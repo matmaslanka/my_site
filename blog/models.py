@@ -21,7 +21,7 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100, null=True)
     excerpt = models.CharField(max_length=100, null=True)
-    image_name = models.CharField(max_length = 50)
+    image = models.ImageField(upload_to="posts", null=True)
     date = models.DateField(auto_now=True) #I must find how to insert the date.
     slug = models.SlugField(unique=True, default="", blank=True, null=False, db_index=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
@@ -29,11 +29,20 @@ class Post(models.Model):
     tag = models.ManyToManyField(Tag)
 
     def __str__(self) -> str:
-        return f"{self.title} - {self.excerpt}"
+        return f"{self.title}"
+    
+    
     
     # def save(self, *args, **kwargs):
     #     self.slug = slugify(self.title)
     #     super().save(*args, **kwargs)
+
+class Comment(models.Model):
+    user_name = models.CharField(max_length=120, null=True)
+    user_email = models.EmailField()
+    text = models.TextField(max_length=400)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+
 
 
     
